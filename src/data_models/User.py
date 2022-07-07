@@ -1,6 +1,9 @@
+from src.data_models.Entity import Entity
+
+
 _collection_name = "user"
 
-class User(object):
+class User(Entity):
     """
     Holds the user data.
     """
@@ -22,12 +25,13 @@ class User(object):
         ValueError
             Raised if the user or password is not defined.
         """
-        if not user or user.isspace():
-            raise ValueError("user must be defined.")
-        elif not password or password.isspace():
+
+        super().__init__(_collection_name)
+
+        if not password or password.isspace():
             raise ValueError("password must be defined.")
 
-        self.id = "{0}::{1}".format(_collection_name, "".join(user.split()).lower())
+        self.id = self.create_id(user)
         self.user = user
         self.password = password
         self._rid = "",
@@ -35,39 +39,6 @@ class User(object):
         self._etag = "",
         self._attachments = "",
         self._ts = 0
-    
-    def create_id(self, user: str) -> str:
-        """
-        Creates a new id for the object.
-
-        Parameters
-        ----------
-        user: str
-            The user which will be the partial makeup of the id.
-
-        Returns
-        -------
-        str
-            The new id.
-
-        Raises
-        ------
-        ValueError
-            Raised if the parameter given is invalid.
-
-        Remarks
-        -------
-        When calling this method, the id and user attributes for this class will also be assigned
-        with the new id created. There is no need to assign the new id to 'self.id' nor 'self.user'.
-        """
-
-        if not user or user.isspace():
-            raise ValueError("'user' must be defined.")
-
-        self.user = "".join(user.split())
-        self.id = "{0}::{1}".format(_collection_name, self.user.lower())
-
-        return self.id
 
     def __str__(self) -> str:
         return "'id': '{0}' | 'user': '{1}'".format(self.id, self.user)
