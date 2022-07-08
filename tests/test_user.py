@@ -33,8 +33,8 @@ class UserTests(unittest.TestCase):
         new_id = user.create_id("new Dummy ")
 
         self.assertEqual("user::newdummy", new_id)
-        self.assertEqual("newDummy", user.user)
-        self.assertEqual("user::newdummy", user.id)
+        self.assertEqual("dummy", user.user)
+        self.assertEqual(new_id, user.id)
 
     # Asserts a ValueError is raised if invalid data is given.
     def test_create_id_invalid_user(self):
