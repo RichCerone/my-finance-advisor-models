@@ -17,6 +17,7 @@ class Entity:
         self.id = ""
         self.collection_name = collection_name
 
+
     def create_id(self, id: str):
         """
         Creates a new id for the object.

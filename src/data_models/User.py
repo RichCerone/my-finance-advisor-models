@@ -1,6 +1,5 @@
 from src.data_models.Entity import Entity
 
-
 _collection_name = "user"
 
 class User(Entity):
@@ -39,6 +38,7 @@ class User(Entity):
         self._etag = "",
         self._attachments = "",
         self._ts = 0
+
 
     def __str__(self) -> str:
         return "'id': '{0}' | 'user': '{1}'".format(self.id, self.user)
