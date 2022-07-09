@@ -33,11 +33,6 @@ class User(Entity):
         self.id = self.create_id(user)
         self.user = user
         self.password = password
-        self._rid = "",
-        self._self = ""
-        self._etag = "",
-        self._attachments = "",
-        self._ts = 0
 
 
     def __str__(self) -> str:
