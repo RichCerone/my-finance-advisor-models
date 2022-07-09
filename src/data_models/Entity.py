@@ -15,6 +15,11 @@ class Entity:
         """
 
         self.id = ""
+        self._rid = "",
+        self._self = ""
+        self._etag = "",
+        self._attachments = "",
+        self._ts = 0
         self.collection_name = collection_name
 
 
